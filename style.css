@@ -1,0 +1,33 @@
+body{
+    background-color: #EEF9BF;
+    text-align: center;
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: #75B79E;
+    margin-top: 40px;
+}
+
+main{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.atras{
+    box-sizing: border-box;
+    width: 117px;
+    height: 146px;
+    background-color:#A7E9AF;
+    padding: 22px 10px;
+    border-radius: 5px;
+    border: 1px solid #99CEA8;
+}
+
+.atras img{
+    width: 100px;
+    height: 100px;
+}
