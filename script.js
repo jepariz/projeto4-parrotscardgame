@@ -1,8 +1,8 @@
-let qtdCartas = Number((prompt(`Bem-vindo ao Parrots Card Game! 
-Escolha a quantidade de cartas entre 4 e 14. 
-Lembre-se que o número de cartas precisa ser par.
+// let qtdCartas = Number((prompt(`Bem-vindo ao Parrots Card Game! 
+// Escolha a quantidade de cartas entre 4 e 14. 
+// Lembre-se que o número de cartas precisa ser par.
 
-Com quantas cartas você quer jogar?`)));
+// Com quantas cartas você quer jogar?`)));
 
 
 
