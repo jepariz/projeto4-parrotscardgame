@@ -79,18 +79,10 @@ h1{
     transform: rotateY(-180deg);
 }
 
-.card:hover .front-face{
-    transform: rotateY(0deg);
-}
-
-.card:hover .back-face{
-    transform: rotateY(180deg);
-}
-
 .card.flip .back-face{
     transform: rotateY(180deg);
 }
 
-.card.flip .back-face{
+.card.flip .front-face{
     transform: rotateY(0);
 }
