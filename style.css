@@ -74,5 +74,8 @@ h1{
     height: 80px;
 }
 
+.click{
+    pointer-events: none;
+}
 
 
