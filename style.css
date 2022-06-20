@@ -18,12 +18,12 @@ h1{
 
 .container{
     margin-top: 40px;
-    height: 70%;
-    width: 70%;
+    height: 50%;
+    width: 50%;
     gap: 7px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     cursor: pointer;
 }
 
