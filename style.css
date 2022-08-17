@@ -1,0 +1,76 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+
+body{
+    width: 100%;
+    background-color: #EEF9BF;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container{
+    width: 50%;
+    margin-top: 50px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: #75B79E;
+}
+
+.tabuleiro{
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.carta{
+    width: 117px;
+    height: 146px;
+    border-radius: 5px;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    position: relative;
+    cursor: pointer;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.front, .back{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    transition: transform .6s cubic-bezier(0.4, 0.0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.back{
+    transform: rotateY(180deg);
+}
+
+.flip {
+    transform: rotateY(180deg) rotateZ(50deg);
+}
+
