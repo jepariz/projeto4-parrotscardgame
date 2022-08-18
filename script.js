@@ -1,7 +1,9 @@
 let numero;
 let tabuleiro;
-let cartaSelecionada;
 let primeiraCarta, segundaCarta;
+let jogadas = 0;
+let cartaSelecionada;
+let cartasViradas;
 
 const cartas = [
     'bobrossparrot', 
@@ -17,6 +19,7 @@ let cartasEmbaralhadas = [];
 
 
 
+
 function comparador() { 
 	return Math.random() - 0.5;   
 }
@@ -28,8 +31,8 @@ function inserirCartas(){
     
    for(let i = 0; i < cartasEmbaralhadas.length; i++ ){
     let modeloCarta = `
-    <div class="carta" >
-        <img onclick="selecionarCarta(this)" class="front ${cartasEmbaralhadas[i]}" src="./img/front.png">
+    <div class="carta" onclick="selecionarCarta(this)">
+        <img class="front ${cartasEmbaralhadas[i]}" src="./img/front.png">
         <img  class="back" src="./img/${cartasEmbaralhadas[i]}.gif">
     </div>`
 
@@ -53,8 +56,8 @@ function iniciarJogo(){
 // Escolher número de cartas -------------------------------------------------------------------------------
 
 function definirNumeroCartas(){
-    numero = 4;
-    // numero = Number(prompt(`Com quantas cartas você quer jogar? OBS: Escolha um número PAR entre 4 e 14`));
+    
+   numero = Number(prompt(`Com quantas cartas você quer jogar? OBS: Escolha um número PAR entre 4 e 14`));
     while(numero % 2 !== 0 || numero === null || numero === NaN || numero < 4 || numero > 14){
         alert('Por favor, escolha um número PAR entre 4 e 14');
         numero = prompt("Digite o número escolhido");
@@ -63,38 +66,69 @@ function definirNumeroCartas(){
 definirNumeroCartas();
 iniciarJogo();
 
+// Virar cartas e comparar ----------------------------------------------------------------------------------
 
 function selecionarCarta(carta){
 
-    cartaSelecionada = carta.parentNode;
-    cartaSelecionada.classList.add("flip");
-
-    // cartaSelecionada1 = carta.parentNode;
-    // cartaSelecionada1.classList.add("flip");
-
-    console.log(cartaSelecionada)
-
-    if(primeiraCarta === undefined){
-       primeiraCarta = carta.classList[1];;
-    } else if(segundaCarta === undefined){
-        segundaCarta = carta.classList[1];
+    if(carta.classList.contains("flip")){
+        return
     }
 
-    // if(primeiraCarta !== undefined && segundaCarta !== undefined && segundaCarta !== primeiraCarta){
+    if(primeiraCarta !== undefined && segundaCarta !== undefined){
+        return
+    }
 
-    //     // function desvirarCarta(){
-    //     // cartaSelecionada.classList.add("shake");
-    //     // cartaSelecionada.classList.remove("flip");
+   carta.classList.add("flip");
+    jogadas = jogadas + 1;
 
-    //     // }
+    console.log(jogadas)
 
-    // }
+   if(primeiraCarta === undefined){
+    primeiraCarta = carta;
+    } else if(segundaCarta === undefined){
+     segundaCarta = carta;
+    }  
 
-   console.log(primeiraCarta,segundaCarta)
+    if(primeiraCarta.innerHTML !== segundaCarta.innerHTML){
+     setTimeout(virarCartas, 1000);
+    } else{
+        limparCartas();
+    }
+
+    let finalizar = document.querySelectorAll(".carta")
+
+    finalizar = Array.from(finalizar)
+
+    let check = finalizar.every((carta) => carta.classList.contains("flip"))
+
+    if(check){
+       setTimeout(terminarJogo, 300);
+    }
 
 }
 
+function virarCartas (){
+    primeiraCarta.classList.add("shake");
+    primeiraCarta.classList.remove("flip");
+    segundaCarta.classList.add("shake");
+    segundaCarta.classList.remove("flip");
+    limparCartas();
 
+}
 
+function limparCartas(){
+    primeiraCarta = undefined;
+    segundaCarta = undefined;
+}
 
+function terminarJogo (){
+    alert(`Você ganhou em ${jogadas} jogadas!`);
+    let jogarNovamente = prompt("Quer jogar novamente?");
+
+    if(jogarNovamente === "sim"){
+      location.reload();
+    } else{
+        return
+    }
+}
 
