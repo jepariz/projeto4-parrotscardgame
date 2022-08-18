@@ -123,12 +123,11 @@ function limparCartas(){
 
 function terminarJogo (){
     alert(`Você ganhou em ${jogadas} jogadas!`);
-    let jogarNovamente = prompt("Quer jogar novamente?");
+    let jogarNovamente = prompt("Quer jogar novamente? Digite 'sim' ou 'não'");
 
     if(jogarNovamente === "sim"){
       location.reload();
-    } else{
-        return
+    } else {
+       return 
     }
 }
-
