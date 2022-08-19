@@ -17,9 +17,6 @@ const cartas = [
 
 let cartasEmbaralhadas = [];
 
-
-
-
 function comparador() { 
 	return Math.random() - 0.5;   
 }
@@ -51,7 +48,6 @@ function iniciarJogo(){
     }
     inserirCartas();
 }
-
 
 // Escolher número de cartas -------------------------------------------------------------------------------
 
