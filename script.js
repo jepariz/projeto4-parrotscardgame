@@ -4,6 +4,9 @@ let primeiraCarta, segundaCarta;
 let jogadas = 0;
 let cartaSelecionada;
 let cartasViradas;
+let check;
+let tempo;
+let id;
 
 const cartas = [
     'bobrossparrot', 
@@ -47,13 +50,13 @@ function iniciarJogo(){
 
     }
     inserirCartas();
+    iniciarContador();
 }
 
 // Escolher número de cartas -------------------------------------------------------------------------------
 
 function definirNumeroCartas(){
-    
-   numero = Number(prompt(`Com quantas cartas você quer jogar? OBS: Escolha um número PAR entre 4 e 14`));
+  numero = Number(prompt(`Com quantas cartas você quer jogar? OBS: Escolha um número PAR entre 4 e 14`));
     while(numero % 2 !== 0 || numero === null || numero === NaN || numero < 4 || numero > 14){
         alert('Por favor, escolha um número PAR entre 4 e 14');
         numero = prompt("Digite o número escolhido");
@@ -95,18 +98,17 @@ function selecionarCarta(carta){
 
     finalizar = Array.from(finalizar)
 
-    let check = finalizar.every((carta) => carta.classList.contains("flip"))
+    check = finalizar.every((carta) => carta.classList.contains("flip"))
 
     if(check){
        setTimeout(terminarJogo, 300);
     }
-
 }
 
+
+
 function virarCartas (){
-    primeiraCarta.classList.add("shake");
     primeiraCarta.classList.remove("flip");
-    segundaCarta.classList.add("shake");
     segundaCarta.classList.remove("flip");
     limparCartas();
 
@@ -118,7 +120,7 @@ function limparCartas(){
 }
 
 function terminarJogo (){
-    alert(`Você ganhou em ${jogadas} jogadas!`);
+    alert(`Você ganhou em ${jogadas} jogadas e ${tempo} segundos!`);
     let jogarNovamente = prompt("Quer jogar novamente? Digite 'sim' ou 'não'");
 
     if(jogarNovamente === "sim"){
@@ -127,3 +129,18 @@ function terminarJogo (){
        return 
     }
 }
+
+function iniciarContador (){
+    tempo = 0;
+    id = setInterval(atualizaContador, 1000);
+}
+
+function atualizaContador (){
+    tempo++;
+    let relogio = document.querySelector(".tempo");
+    relogio.innerHTML = `${tempo}`;
+    if(check){
+        clearInterval(id);
+    }
+}
+
