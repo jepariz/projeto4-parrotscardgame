@@ -105,8 +105,6 @@ function selecionarCarta(carta){
     }
 }
 
-
-
 function virarCartas (){
     primeiraCarta.classList.remove("flip");
     segundaCarta.classList.remove("flip");
